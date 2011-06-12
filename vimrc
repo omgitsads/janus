@@ -26,12 +26,22 @@ set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
 
 " Status bar
+set statusline='%{fugitive#statusline()}'
 set laststatus=2
+
+" Remove Left Scrollbar
+set go-=L
+set go-=r
+
+" Default Font
+set gfn=Inconsolata:h16
+
 
 " Without setting this, ZoomWin restores windows in a way that causes
 " equalalways behavior to be triggered the next time CommandT is used.
 " This is likely a bludgeon to solve some other issue, but it works
 set noequalalways
+set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/**,log/**
 
 " NERDTree configuration
 let NERDTreeIgnore=['\.rbc$', '\~$']
@@ -46,6 +56,15 @@ map <Leader><Leader> :ZoomWin<CR>
 " CTags
 map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
 map <C-\> :tnext<CR>
+
+" Tidy JSON
+map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
+
+" Minibuffer Explorer Settings
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+" let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1
 
 " Remember last location in file
 if has("autocmd")
@@ -70,10 +89,16 @@ au FileType make                                     set noexpandtab
 " Thorfile, Rakefile, Vagrantfile and Gemfile are Ruby
 au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set ft=ruby
 
+" erb files are HTML
+"au BufRead,BufNewFile *.html.erb set filetype=html.eruby
+
 " md, markdown, and mk are markdown and define buffer-local preview
 au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} call s:setupMarkup()
 
 au BufRead,BufNewFile *.txt call s:setupWrapping()
+
+" JSON
+au! BufRead,BufNewFile *.json setfiletype json
 
 " make python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
 au FileType python  set tabstop=4 textwidth=79
@@ -104,6 +129,12 @@ nmap <C-Down> ]e
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
 
+" bclose plugin
+nmap <C-W>! <Plug>Kwbd
+
+" clear whitespace
+command Ws 1,%s/\s\+$//
+
 " Enable syntastic syntax checking
 let g:syntastic_enable_signs=1
 let g:syntastic_quiet_warnings=1
@@ -117,12 +148,19 @@ endif
 let g:gist_detect_filetype = 1
 let g:gist_open_browser_after_post = 1
 
+" Add RagTag
+inoremap <M-o>       <Esc>o
+inoremap <C-j>       <Down>
+let g:ragtag_global_maps = 1
+
 " Use modeline overrides
 set modeline
 set modelines=10
 
 " Default color scheme
-color desert
+syntax enable
+set background=dark
+colorscheme solarized
 
 " Directories for swp files
 set backupdir=~/.vim/backup

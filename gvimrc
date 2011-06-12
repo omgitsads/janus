@@ -65,7 +65,12 @@ endif
 set guioptions-=T
 
 " Default gui color scheme
-color ir_black
+syntax enable
+set background=dark
+colorscheme solarized
+
+" Realive Line Numbers
+set relativenumber
 
 " ConqueTerm wrapper
 function StartTerm()
