@@ -71,12 +71,12 @@ set guioptions-=T
 
 " Default gui color scheme
 syntax enable
-set background=dark
+set background=light
 colorscheme solarized
 
 " Realive Line Numbers
-set relativenumber
-autocmd BufNewFile,BufRead * set relativenumber
+" set relativenumber
+" autocmd BufNewFile,BufRead * set relativenumber
 
 " ConqueTerm wrapper
 function StartTerm()

@@ -159,6 +159,9 @@ vim_plugin_task "gist-vim",         "git://github.com/mattn/gist-vim.git"
 vim_plugin_task "bufkill.vim",      "git://github.com/vim-scripts/bufkill.vim.git"
 vim_plugin_task "vim-jasmine",      "git://github.com/thomd/vim-jasmine.git"
 vim_plugin_task "rvm.vim",          "git://github.com/csexton/rvm.vim.git"
+vim_plugin_task "vim-elixir",       "git://github.com/miaout17/vim-elixir.git"
+vim_plugin_task "vimroom",          "https://github.com/mikewest/vimroom.git"
+vim_plugin_task "ctrlp",            "https://github.com/kien/ctrlp.vim.git"
 
 #vim_plugin_task "hammer",           "git://github.com/robgleeson/hammer.vim.git" do
 #  sh "gem install github-markup redcarpet"

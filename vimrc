@@ -126,8 +126,8 @@ cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 
 " Unimpaired configuration
 " Bubble single lines
-nmap <C-Up> [e
-nmap <C-Down> ]e
+" nmap <C-Up> [e
+" nmap <C-Down> ]e
 " Bubble multiple lines
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
@@ -162,7 +162,7 @@ set modelines=10
 
 " Default color scheme
 syntax enable
-set background=dark
+set background=light
 colorscheme solarized
 
 " Directories for swp files
@@ -180,6 +180,12 @@ runtime! macros/matchit.vim
 
 " Show (partial) command in the status line
 set showcmd
+
+" Bind CTRL+arrow keys for moving around windows
+nmap <C-Up>     <C-w><Up>
+nmap <C-Down>   <C-w><Down>
+nmap <C-Left>   <C-w><Left>
+nmap <C-Right>  <C-w><Right>
 
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
